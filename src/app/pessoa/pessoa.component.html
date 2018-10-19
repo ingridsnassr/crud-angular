@@ -1,0 +1,49 @@
+<p>Listar Pessoas</p>
+
+<fieldset>
+<div>
+<label>Nome</label>
+<input type="text" [(ngModel)]="pessoa.nome" />
+</div>
+
+<div>
+<label>Sobrenome</label>
+<input type="text" [(ngModel)]="pessoa.sobrenome" />
+</div>
+
+<div>
+    <label>Gênero</label>
+    <select [(ngModel)]="pessoa.genero">
+      <option value="">Selecione</option>
+      <option *ngFor="let g of generos" [value]="g">
+        {{ g }}
+      </option>
+    </select>
+  </div>
+
+<div>
+<button (click)="salvar()">Salvar</button>
+</div>
+</fieldset>
+
+<table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Gênero</th>
+        <th colspan="2">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of pessoas">
+        <td>{{ p.nome }}</td>
+        <td>{{ p.sobrenome }}</td>
+        <td>{{ p.genero }}</td>
+        <td>
+          <button (click)="editar(p)">Editar</button>
+          <button (click)="excluir(p.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
